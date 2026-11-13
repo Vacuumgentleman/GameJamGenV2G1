@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartGame : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
-    private Button button;
+    public Button button;
     void Start()
     {
         button.onClick.AddListener(LoadGame);
