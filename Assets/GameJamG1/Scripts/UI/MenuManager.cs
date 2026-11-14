@@ -5,14 +5,42 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    public Button button;
+    public Button startButton;
+    public Button settingsButton;
+    public Button exitButton;
+    public Button backButton;
+    public Slider musicVolume;
+    public Slider sfxVolume;
+    public GameObject titleScreen;
+    public GameObject settingsMenu;
+    
     void Start()
     {
-        button.onClick.AddListener(LoadGame);
+        TitleScreen();
+    }
+    void TitleScreen()
+    {
+        titleScreen.SetActive(true);
+        startButton.onClick.AddListener(StartGame);
+        settingsButton.onClick.AddListener(SettingsMenu);
+        exitButton.onClick.AddListener(ExitGame);
+        settingsMenu.SetActive(false);
     }
 
-    void LoadGame()
+    void StartGame()
     {
         SceneManager.LoadScene("Prototype");
+    }
+
+    void SettingsMenu()
+    {
+        titleScreen.SetActive(false);
+        settingsMenu.SetActive(true);
+        backButton.onClick.AddListener(TitleScreen);
+    }
+
+    void ExitGame()
+    {
+        Application.Quit();
     }
 }
