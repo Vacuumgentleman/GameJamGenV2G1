@@ -9,8 +9,6 @@ public class MenuManager : MonoBehaviour
     public Button settingsButton;
     public Button exitButton;
     public Button backButton;
-    public Slider musicVolume;
-    public Slider sfxVolume;
     public GameObject titleScreen;
     public GameObject settingsMenu;
     
