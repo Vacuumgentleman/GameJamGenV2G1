@@ -20,7 +20,9 @@ public class MenuManager : MonoBehaviour
     }
     void TitleScreen()
     {
+        // Set the interface to active
         titleScreen.SetActive(true);
+        // Add listeners to each button
         startButton.onClick.AddListener(StartGame);
         settingsButton.onClick.AddListener(SettingsMenu);
         exitButton.onClick.AddListener(ExitGame);
@@ -50,6 +52,7 @@ public class MenuManager : MonoBehaviour
 
     void ExitGame()
     {
+        // Quit the application, only works in build.
         Application.Quit();
     }
 }
