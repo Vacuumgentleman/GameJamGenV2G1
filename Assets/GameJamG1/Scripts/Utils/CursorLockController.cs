@@ -26,7 +26,7 @@ namespace GameJamG1.Utils
             var clicked = Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame;
             if (clicked && Cursor.lockState != CursorLockMode.Locked)
             {
-                Lock();
+                //Lock();
             }
         }
 
