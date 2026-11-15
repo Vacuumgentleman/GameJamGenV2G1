@@ -14,26 +14,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Arbol1
     second: {fileID: 2100000, guid: ef08e23bb66db04920181edcd07bc653, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Telaraña
-    second: {fileID: 2100000, guid: d88009554fe8340bcfe4775af5651fcc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Foco
-    second: {fileID: 2100000, guid: b3b0b496fc23cbe6eaab0faf667e274c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Carpet_01
-    second: {fileID: 2100000, guid: 6c36fbe734c5289848eed42682ab2680, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Carpet_02
-    second: {fileID: 2100000, guid: 0f6a0219c72e0f505d9e29a59161e66a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
