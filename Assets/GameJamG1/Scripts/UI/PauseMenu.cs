@@ -2,13 +2,14 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using GameJamG1.Utils;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject settingsMenu;
     public GameObject instructionsMenu;
-    public GameObject player;
+    public CursorLockController lockController;
     public bool isPaused;
     public Button resumeButton;
     public Button instructionsButton;
@@ -24,10 +25,15 @@ public class PauseMenu : MonoBehaviour
         resumeButton.onClick.AddListener(ResumeGame);
         instructionsButton.onClick.AddListener(Instructions);
         settingsButton.onClick.AddListener(SettingsMenu);
-        returnToMenu.onClick.AddListener(ResumeGame);
+        returnToMenu.onClick.AddListener(BackToMenu);
         backToPause[0].onClick.AddListener(PauseGame);
         backToPause[1].onClick.AddListener(PauseGame);
-        Debug.Log("Added Listeners");
+        Time.timeScale = 1f;
+    }
+
+    private void Awake()
+    {
+        lockController = FindFirstObjectByType<CursorLockController>();
     }
 
     void Update()
@@ -46,19 +52,26 @@ public class PauseMenu : MonoBehaviour
     }
     public void PauseGame()
     {
+        
         pauseMenu.SetActive(true);
         settingsMenu.SetActive(false);
-        //Time.timeScale = 0f;
+        instructionsMenu.SetActive(false);
+        Time.timeScale = 0f;
         isPaused = true;
+        lockController.Unlock();
     }
 
     public void ResumeGame()
     {
+        
         Debug.Log("resume");
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        Debug.Log(lockController);
+        lockController.Lock();
         Time.timeScale = 1f;
         isPaused = false;
+        
     }
 
     public void Instructions()
