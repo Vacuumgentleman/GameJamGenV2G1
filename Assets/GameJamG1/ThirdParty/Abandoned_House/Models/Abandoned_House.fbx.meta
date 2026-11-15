@@ -14,6 +14,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Arbol1
     second: {fileID: 2100000, guid: ef08e23bb66db04920181edcd07bc653, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Telaraña
+    second: {fileID: 2100000, guid: d88009554fe8340bcfe4775af5651fcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Foco
+    second: {fileID: 2100000, guid: b3b0b496fc23cbe6eaab0faf667e274c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
