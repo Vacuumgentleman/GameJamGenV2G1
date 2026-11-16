@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameJamG1.Dialogue.DialogueSequence
   lines:
   - text: Hay pastillas dentro. Me las tomo.
-    durationOverride: 0
+    durationOverride: 10
     sound: {fileID: 0}
   lockPlayer: 0
