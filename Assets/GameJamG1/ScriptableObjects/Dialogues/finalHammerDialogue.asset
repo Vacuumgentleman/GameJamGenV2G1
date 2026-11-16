@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59b76f059eb14ec40439a60ef361506, type: 3}
+  m_Name: finalHammerDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::GameJamG1.Dialogue.DialogueSequence
+  lines:
+  - text: "\"Ocurre altercado vecinal tras un presunto homicidio con herramienta
+      de obra, la v\xEDctima relativamente joven trabajaba en la casa del incidente
+      como cuidador del responsable por este delito. Se busca su paradero y se pide
+      ponerse en contacto si tiene informaci\xF3n relevante que pueda ayudar a su
+      captura\". "
+    durationOverride: 0
+    sound: {fileID: 0}
+  lockPlayer: 0
