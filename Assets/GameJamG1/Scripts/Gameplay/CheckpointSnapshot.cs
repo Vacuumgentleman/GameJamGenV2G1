@@ -22,7 +22,8 @@ namespace GameJamG1.Gameplay
             availablePickups.Clear();
             foreach (var pickup in Object.FindObjectsByType<MatchPickup>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             {
-                if (!pickup.IsConsumed && pickup.gameObject.activeInHierarchy)
+                // Incluye las escondidas en cajones (inactivas pero sin recoger).
+                if (!pickup.IsConsumed)
                 {
                     availablePickups.Add(pickup);
                 }
@@ -47,7 +48,8 @@ namespace GameJamG1.Gameplay
 
             foreach (var pickup in availablePickups)
             {
-                if (pickup != null && (pickup.IsConsumed || !pickup.gameObject.activeSelf))
+                // Solo las recogidas: una que sigue escondida en un cajon cerrado no debe aparecer.
+                if (pickup != null && pickup.IsConsumed)
                 {
                     pickup.ResetInteraction();
                 }

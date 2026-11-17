@@ -94,6 +94,7 @@ namespace GameJamG1.Items
 
             var text = copy.GetComponent<TMP_Text>();
             text.fontSize = source.fontSize * 0.8f;
+            text.alpha = 1f; // el contador de cerillas puede estar desvanecido al copiarlo
             return text;
         }
     }
