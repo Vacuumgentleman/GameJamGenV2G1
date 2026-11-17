@@ -86,6 +86,13 @@ namespace GameJamG1.Items
             SetLit(state.Lit, false);
         }
 
+        // Vuelve al estado de fabrica (pila llena / vela sin usar): el estado de un objeto que aun no se habia tocado.
+        public void ResetState()
+        {
+            Remaining = InitialRemaining;
+            SetLit(startsLit, false);
+        }
+
         protected abstract bool CanTurnOn();
 
         protected virtual void Tick(float deltaTime)

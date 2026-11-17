@@ -45,6 +45,8 @@ namespace GameJamG1.Interaction
 
         public virtual bool IsLocked => !AreRequiredFlagsActive();
 
+        public bool IsConsumed => consumed;
+
         public virtual string GetPrompt()
         {
             return promptText;

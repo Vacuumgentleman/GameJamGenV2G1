@@ -101,6 +101,19 @@ namespace GameJamG1.Objects
             SetOpen(true, breakDuration, breakSound == null);
         }
 
+        // Deshace la rotura: la puerta vuelve entera y cerrada (al reaparecer tras morir).
+        public void Repair()
+        {
+            if (!IsBroken)
+            {
+                return;
+            }
+
+            IsBroken = false;
+            currentAngle = openAngle;
+            SnapClosed();
+        }
+
         public override void InteractLocked(PlayerInteractor interactor)
         {
             if (lockedSound != null)

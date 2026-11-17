@@ -27,6 +27,19 @@ namespace GameJamG1.Items
             CountChanged?.Invoke(Count);
         }
 
+        // Para volver al numero de cerillas del ultimo checkpoint al morir.
+        public void SetCount(int count)
+        {
+            count = Mathf.Max(0, count);
+            if (count == Count)
+            {
+                return;
+            }
+
+            Count = count;
+            CountChanged?.Invoke(Count);
+        }
+
         public bool TryConsume(int amount)
         {
             if (amount <= 0 || Count < amount)

@@ -70,6 +70,20 @@ namespace GameJamG1.Objects
             routine = StartCoroutine(Animate(open ? 1f : 0f));
         }
 
+        // Cierra al instante, sin animacion ni sonido.
+        protected void SnapClosed()
+        {
+            if (routine != null)
+            {
+                StopCoroutine(routine);
+                routine = null;
+            }
+
+            IsOpen = false;
+            progress = 0f;
+            Evaluate(0f);
+        }
+
         protected abstract void Evaluate(float value);
 
         protected virtual void OnOpenStarted()

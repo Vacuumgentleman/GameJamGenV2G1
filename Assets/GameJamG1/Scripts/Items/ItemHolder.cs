@@ -95,6 +95,22 @@ namespace GameJamG1.Items
             return true;
         }
 
+        // Luz en la mano que corresponde a ese objeto, o null si no se lleva.
+        public LightSource FindHeldLight(ItemData data)
+        {
+            if (data == null)
+            {
+                return null;
+            }
+
+            if (main != null && main.Data == data)
+            {
+                return main.Light;
+            }
+
+            return offHand != null && offHand.Data == data ? offHand.Light : null;
+        }
+
         public void Clear(ItemSlot slot)
         {
             if (main != null && main.Data.Slot == slot)

@@ -38,6 +38,7 @@ namespace GameJamG1.Gameplay
         private readonly List<Vector3> enemyPositions = new();
         private readonly List<Quaternion> enemyRotations = new();
 
+        private readonly CheckpointSnapshot snapshot = new();
         private Vector3 checkpointPosition;
         private Quaternion checkpointRotation;
         private bool dying;
@@ -101,6 +102,7 @@ namespace GameJamG1.Gameplay
 
             checkpointPosition = player.position;
             checkpointRotation = player.rotation;
+            snapshot.Capture(player);
         }
 
         public void KillPlayer()
@@ -222,6 +224,8 @@ namespace GameJamG1.Gameplay
             {
                 TeleportPlayer(checkpointPosition, checkpointRotation);
             }
+
+            snapshot.Restore(player);
 
             yield return new WaitForSeconds(deathHold);
             yield return Fade(0f);
