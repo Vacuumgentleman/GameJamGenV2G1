@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameJamG1.Dialogue.DialogueSequence
   lines:
   - text: Que fue eso...
-    durationOverride: 0
+    durationOverride: 10
     sound: {fileID: 0}
   - text: Mejor no vuelvo a mirar.
-    durationOverride: 0
+    durationOverride: 10
     sound: {fileID: 0}
   lockPlayer: 0
