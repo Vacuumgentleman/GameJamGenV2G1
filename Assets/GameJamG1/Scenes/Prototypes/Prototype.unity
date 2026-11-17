@@ -991,7 +991,7 @@ MonoBehaviour:
   flagsToSetOnInteract: []
   oneShot: 1
   hideWhenConsumed: 0
-  interactSound: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: cc93744608f77d444940721d9e0741a4, type: 3}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -2001,6 +2001,7 @@ GameObject:
   - component: {fileID: 82984872}
   - component: {fileID: 82984874}
   - component: {fileID: 82984873}
+  - component: {fileID: 82984875}
   m_Layer: 0
   m_Name: OnIndicator
   m_TagString: Untagged
@@ -2108,6 +2109,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &82984875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82984871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &90211097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8010128486160198793, guid: c1c6c8d3819a33c458f9be7f88892e62, type: 3}
@@ -2340,7 +2370,7 @@ PrefabInstance:
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: breakSound
       value: 
-      objectReference: {fileID: 8300000, guid: 4674ca1fbebacd74aad72890d2fee06c, type: 3}
+      objectReference: {fileID: 8300000, guid: 811742c4dc1369847a0da0d6cb0c8d69, type: 3}
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: closeSound
       value: 
@@ -2352,7 +2382,7 @@ PrefabInstance:
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: lockedSound
       value: 
-      objectReference: {fileID: 8300000, guid: 3ff240fcbdca26240ab66573ac44f979, type: 3}
+      objectReference: {fileID: 8300000, guid: 3deb2e81efdf47741840a496c2d0c1a4, type: 3}
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: lockedDialogue
       value: 
@@ -3516,7 +3546,7 @@ AudioSource:
   m_GameObject: {fileID: 140170219}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6584986935355474707, guid: 5ec20254604c7ee4da88800fb73df5f9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -5189,7 +5219,7 @@ PrefabInstance:
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: breakSound
       value: 
-      objectReference: {fileID: 8300000, guid: 4674ca1fbebacd74aad72890d2fee06c, type: 3}
+      objectReference: {fileID: 8300000, guid: 811742c4dc1369847a0da0d6cb0c8d69, type: 3}
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: closeSound
       value: 
@@ -16363,7 +16393,7 @@ PrefabInstance:
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: breakSound
       value: 
-      objectReference: {fileID: 8300000, guid: 4674ca1fbebacd74aad72890d2fee06c, type: 3}
+      objectReference: {fileID: 8300000, guid: 811742c4dc1369847a0da0d6cb0c8d69, type: 3}
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: closeSound
       value: 
@@ -16375,7 +16405,7 @@ PrefabInstance:
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: lockedSound
       value: 
-      objectReference: {fileID: 8300000, guid: 3ff240fcbdca26240ab66573ac44f979, type: 3}
+      objectReference: {fileID: 8300000, guid: 3deb2e81efdf47741840a496c2d0c1a4, type: 3}
     - target: {fileID: 7212698406440900088, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.74651
@@ -16590,7 +16620,7 @@ AudioSource:
   m_GameObject: {fileID: 549986032}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6584986935355474707, guid: 5ec20254604c7ee4da88800fb73df5f9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -18892,7 +18922,7 @@ MonoBehaviour:
   flagsToSetOnInteract: []
   oneShot: 1
   hideWhenConsumed: 0
-  interactSound: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: cc93744608f77d444940721d9e0741a4, type: 3}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -24483,12 +24513,12 @@ AudioSource:
   m_GameObject: {fileID: 985547102}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6584986935355474707, guid: 5ec20254604c7ee4da88800fb73df5f9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: f0ba7efa932c84141b9e54a515c9ad91, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
-  m_Pitch: 1
+  m_Pitch: 0.8
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -25085,7 +25115,7 @@ MonoBehaviour:
   flagsToSetOnInteract: []
   oneShot: 1
   hideWhenConsumed: 0
-  interactSound: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: 7c4704c25fb68a049b196598b1b7560b, type: 3}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -29852,7 +29882,7 @@ MonoBehaviour:
   flagsToSetOnInteract: []
   oneShot: 1
   hideWhenConsumed: 0
-  interactSound: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: 7c4704c25fb68a049b196598b1b7560b, type: 3}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -31734,7 +31764,7 @@ AudioSource:
   m_GameObject: {fileID: 1302675705}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6584986935355474707, guid: 5ec20254604c7ee4da88800fb73df5f9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b7a80553b6b4ae247939e6089be3050c, type: 3}
   m_PlayOnAwake: 1
@@ -35666,7 +35696,7 @@ PrefabInstance:
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: breakSound
       value: 
-      objectReference: {fileID: 8300000, guid: 4674ca1fbebacd74aad72890d2fee06c, type: 3}
+      objectReference: {fileID: 8300000, guid: 811742c4dc1369847a0da0d6cb0c8d69, type: 3}
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: closeSound
       value: 
@@ -35678,7 +35708,7 @@ PrefabInstance:
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: lockedSound
       value: 
-      objectReference: {fileID: 8300000, guid: 3ff240fcbdca26240ab66573ac44f979, type: 3}
+      objectReference: {fileID: 8300000, guid: 3deb2e81efdf47741840a496c2d0c1a4, type: 3}
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: requiredFlags.Array.size
       value: 1

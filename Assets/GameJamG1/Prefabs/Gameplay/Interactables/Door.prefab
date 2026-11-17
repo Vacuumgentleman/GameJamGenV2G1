@@ -99,10 +99,10 @@ MonoBehaviour:
   pivot: {fileID: 0}
   openAngle: 90
   barricadedDialogue: {fileID: 0}
-  lockedSound: {fileID: 0}
+  lockedSound: {fileID: 8300000, guid: 3deb2e81efdf47741840a496c2d0c1a4, type: 3}
   breakDuration: 0.15
   breakAngle: 110
-  breakSound: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: 811742c4dc1369847a0da0d6cb0c8d69, type: 3}
   breakVolume: 1
 --- !u!114 &7237682327692664985
 MonoBehaviour:
