@@ -127,6 +127,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 886339727}
     m_Modifications:
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 77c13309e14f5da4a8da7c65956a3072, type: 3}
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 61180b2da48b4574abb5b5425db441df, type: 3}
     - target: {fileID: 7067458484255867189, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
       propertyPath: m_Name
       value: Drawer 1 (5)
@@ -1181,6 +1189,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bdff0b70584ff214ea67a7246d1a0987, type: 3}
+    - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0973c5165eaaa564494eb4c871769f5d, type: 3}
     - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: lockedDialogue
       value: 
@@ -2276,7 +2292,7 @@ AudioSource:
   m_GameObject: {fileID: 140170219}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6584986935355474707, guid: 5ec20254604c7ee4da88800fb73df5f9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -3703,6 +3719,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bdff0b70584ff214ea67a7246d1a0987, type: 3}
+    - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0973c5165eaaa564494eb4c871769f5d, type: 3}
     - target: {fileID: 7212698406440900088, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.74651
@@ -6682,6 +6706,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair_Breakable
       objectReference: {fileID: 0}
+    - target: {fileID: 8149903050704770297, guid: 9823a5ad87292fb4486558a81e770f2a, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 811742c4dc1369847a0da0d6cb0c8d69, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7281,6 +7309,10 @@ PrefabInstance:
       propertyPath: oneShot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3834990369898751257, guid: a6eaece142641364daba020ef1e89409, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1df827e6682794d41bc81c82eb747f68, type: 3}
     - target: {fileID: 3834990369898751257, guid: a6eaece142641364daba020ef1e89409, type: 3}
       propertyPath: lockedDialogue
       value: 
@@ -13210,6 +13242,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 886339727}
     m_Modifications:
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 77c13309e14f5da4a8da7c65956a3072, type: 3}
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 61180b2da48b4574abb5b5425db441df, type: 3}
     - target: {fileID: 7067458484255867189, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
       propertyPath: m_Name
       value: Drawer 1
@@ -14728,6 +14768,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bdff0b70584ff214ea67a7246d1a0987, type: 3}
+    - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0973c5165eaaa564494eb4c871769f5d, type: 3}
     - target: {fileID: 7212698406440900088, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.74651
@@ -14948,7 +14996,7 @@ AudioSource:
   m_GameObject: {fileID: 549986032}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6584986935355474707, guid: 5ec20254604c7ee4da88800fb73df5f9, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -16550,6 +16598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatchPickup (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8836260775536548813, guid: 028fc9fc43f1b574ba51b12b6df1a83a, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cfbf4dbfb2f5dc64c8ab1fa533486f09, type: 3}
     - target: {fileID: 8837382327749762584, guid: 028fc9fc43f1b574ba51b12b6df1a83a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2652
@@ -17746,6 +17798,10 @@ PrefabInstance:
       propertyPath: oneShot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3834990369898751257, guid: a6eaece142641364daba020ef1e89409, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1df827e6682794d41bc81c82eb747f68, type: 3}
     - target: {fileID: 3834990369898751257, guid: a6eaece142641364daba020ef1e89409, type: 3}
       propertyPath: interactDialogue
       value: 
@@ -19236,6 +19292,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 886339727}
     m_Modifications:
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 77c13309e14f5da4a8da7c65956a3072, type: 3}
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 61180b2da48b4574abb5b5425db441df, type: 3}
     - target: {fileID: 7067458484255867189, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
       propertyPath: m_Name
       value: Drawer 1 (4)
@@ -21261,6 +21325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatchPickup (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8836260775536548813, guid: 028fc9fc43f1b574ba51b12b6df1a83a, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cfbf4dbfb2f5dc64c8ab1fa533486f09, type: 3}
     - target: {fileID: 8837382327749762584, guid: 028fc9fc43f1b574ba51b12b6df1a83a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2652
@@ -21683,6 +21751,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatchPickup (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8836260775536548813, guid: 028fc9fc43f1b574ba51b12b6df1a83a, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cfbf4dbfb2f5dc64c8ab1fa533486f09, type: 3}
     - target: {fileID: 8837382327749762584, guid: 028fc9fc43f1b574ba51b12b6df1a83a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.26520002
@@ -23529,6 +23601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair_Breakable (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8149903050704770297, guid: 9823a5ad87292fb4486558a81e770f2a, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 811742c4dc1369847a0da0d6cb0c8d69, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24714,6 +24790,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 886339727}
     m_Modifications:
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 77c13309e14f5da4a8da7c65956a3072, type: 3}
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 61180b2da48b4574abb5b5425db441df, type: 3}
     - target: {fileID: 7067458484255867189, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
       propertyPath: m_Name
       value: Drawer 1 (3)
@@ -27221,6 +27305,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3834990369898751257, guid: a6eaece142641364daba020ef1e89409, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1df827e6682794d41bc81c82eb747f68, type: 3}
+    - target: {fileID: 3834990369898751257, guid: a6eaece142641364daba020ef1e89409, type: 3}
       propertyPath: interactDialogue
       value: 
       objectReference: {fileID: 11400000, guid: 4783453b104337940ad4c992d81a9b99, type: 2}
@@ -27461,6 +27549,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 886339727}
     m_Modifications:
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 77c13309e14f5da4a8da7c65956a3072, type: 3}
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 61180b2da48b4574abb5b5425db441df, type: 3}
     - target: {fileID: 7067458484255867189, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
       propertyPath: m_Name
       value: Drawer 1 (2)
@@ -28863,6 +28959,10 @@ PrefabInstance:
       propertyPath: oneShot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 585547356261421046, guid: 2a4320f14de355447a420127078606c6, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 654716297891b494a98109d6581dd833, type: 3}
     - target: {fileID: 585547356261421046, guid: 2a4320f14de355447a420127078606c6, type: 3}
       propertyPath: lockedDialogue
       value: 
@@ -30845,6 +30945,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bdff0b70584ff214ea67a7246d1a0987, type: 3}
+    - target: {fileID: 5855993995791894719, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0973c5165eaaa564494eb4c871769f5d, type: 3}
     - target: {fileID: 7212698406440900088, guid: c7f5a66c28cbc3a4889b2b2a3a64b635, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.46651
@@ -31378,6 +31486,10 @@ PrefabInstance:
       propertyPath: oneShot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3834990369898751257, guid: 948c17826fc3a9b408700e23d234888b, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 928e130df5fb2e749a125600f2c2892d, type: 3}
     - target: {fileID: 3834990369898751257, guid: 948c17826fc3a9b408700e23d234888b, type: 3}
       propertyPath: lockedDialogue
       value: 
@@ -33881,6 +33993,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 886339727}
     m_Modifications:
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 77c13309e14f5da4a8da7c65956a3072, type: 3}
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 61180b2da48b4574abb5b5425db441df, type: 3}
+    - target: {fileID: 3600912966902054119, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7067458484255867189, guid: 57597b16a34a1ac4c9e8b9285d63d755, type: 3}
       propertyPath: m_Name
       value: Drawer 1 (1)
@@ -36424,6 +36548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatchPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 8836260775536548813, guid: 028fc9fc43f1b574ba51b12b6df1a83a, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cfbf4dbfb2f5dc64c8ab1fa533486f09, type: 3}
     - target: {fileID: 8837382327749762584, guid: 028fc9fc43f1b574ba51b12b6df1a83a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2652
@@ -39251,6 +39379,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7803629865549087846, guid: 67786cf09f8fb2a459b74d4b4ce1c727, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 13852986958f4714aa0aff994d728cf7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -39537,6 +39669,14 @@ PrefabInstance:
     - target: {fileID: 807737938812949533, guid: 25c47142aad33484186680e00af8aefe, type: 3}
       propertyPath: m_Name
       value: Flashlight_World
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861150249340807963, guid: 25c47142aad33484186680e00af8aefe, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: be158c01793500d498420c8157c8a84e, type: 3}
+    - target: {fileID: 7861150249340807963, guid: 25c47142aad33484186680e00af8aefe, type: 3}
+      propertyPath: state.<Lit>k__BackingField
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8768442413942443526, guid: 25c47142aad33484186680e00af8aefe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41393,6 +41533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_Barricade 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8308578950856185084, guid: 419cf71a097560243bd267071f1bfb62, type: 3}
+      propertyPath: interactSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4bbda96e5f5e73d43a5d49daf0186550, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
