@@ -14,15 +14,43 @@ namespace GameJamG1.Enemy
         [SerializeField, Range(0f, 1f)] private float attackVolume = 1f;
         [SerializeField, Min(1f)] private float maxDistance = 25f;
 
+        [Header("Chase layer")]
+        [Tooltip("Extra loop layered on top of the growl only while chasing.")]
+        [SerializeField] private AudioClip chaseLayerLoop;
+        [SerializeField, Range(0f, 1f)] private float chaseLayerVolume = 0.6f;
+        [Tooltip("Extra scream layered on top of the scream when the chase starts.")]
+        [SerializeField] private AudioClip chaseLayerScream;
+        [SerializeField, Range(0f, 1f)] private float chaseLayerScreamVolume = 0.8f;
+
         private MonsterChaser monster;
         private AudioSource loopSource;
+        private AudioSource layerSource;
         private AudioSource oneShotSource;
 
         private void Awake()
         {
             monster = GetComponent<MonsterChaser>();
             loopSource = CreateSource(true);
+            layerSource = CreateSource(true);
             oneShotSource = CreateSource(false);
+        }
+
+        // Capa de persecucion: suena junto al sonido normal solo mientras persigue.
+        private void UpdateChaseLayer(EnemyState state)
+        {
+            if (state == EnemyState.Chase && chaseLayerLoop != null)
+            {
+                if (!layerSource.isPlaying)
+                {
+                    layerSource.clip = chaseLayerLoop;
+                    layerSource.volume = chaseLayerVolume;
+                    layerSource.Play();
+                }
+
+                return;
+            }
+
+            layerSource.Stop();
         }
 
         private void OnEnable()
@@ -44,6 +72,8 @@ namespace GameJamG1.Enemy
 
         private void HandleState(EnemyState state)
         {
+            UpdateChaseLayer(state);
+
             if (state == EnemyState.Inactive)
             {
                 loopSource.Stop();
@@ -62,6 +92,11 @@ namespace GameJamG1.Enemy
             if (state == EnemyState.Chase && screamClip != null)
             {
                 oneShotSource.PlayOneShot(screamClip, screamVolume);
+            }
+
+            if (state == EnemyState.Chase && chaseLayerScream != null)
+            {
+                oneShotSource.PlayOneShot(chaseLayerScream, chaseLayerScreamVolume);
             }
         }
 

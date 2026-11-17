@@ -19,7 +19,7 @@ namespace GameJamG1.UI
             "<b>E</b>   Interactuar / recoger\n" +
             "<b>F</b>   Encender / apagar luz\n" +
             "<b>Espacio</b>   Respirar (cuando toque)\n" +
-            "<b>Esc</b>   Pausa";
+            "<b>P</b>   Pausa";
 
         private CanvasGroup group;
         private PauseMenu pauseMenu;

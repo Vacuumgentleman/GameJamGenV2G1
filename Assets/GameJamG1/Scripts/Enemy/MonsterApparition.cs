@@ -19,6 +19,7 @@ namespace GameJamG1.Enemy
 
         private EnemyController enemy;
         private Renderer[] renderers;
+        private Collider[] colliders;
         private Camera viewer;
         private float seenFor;
         private bool hidden;
@@ -28,6 +29,7 @@ namespace GameJamG1.Enemy
         {
             enemy = GetComponent<EnemyController>();
             renderers = GetComponentsInChildren<Renderer>(true);
+            colliders = GetComponentsInChildren<Collider>(true);
         }
 
         private void OnEnable()
@@ -52,6 +54,7 @@ namespace GameJamG1.Enemy
             hidden = false;
             seenFor = 0f;
             SetVisible(true);
+            SetSolid(true);
         }
 
         private void Update()
@@ -121,6 +124,7 @@ namespace GameJamG1.Enemy
             }
 
             SetVisible(false);
+            SetSolid(false);
             hidden = true;
             flicker = null;
         }
@@ -132,6 +136,18 @@ namespace GameJamG1.Enemy
                 if (r != null)
                 {
                     r.enabled = visible;
+                }
+            }
+        }
+
+        // Desaparecido del todo: tampoco se puede chocar con el ni tapa la vista.
+        private void SetSolid(bool solid)
+        {
+            foreach (var c in colliders)
+            {
+                if (c != null)
+                {
+                    c.enabled = solid;
                 }
             }
         }
