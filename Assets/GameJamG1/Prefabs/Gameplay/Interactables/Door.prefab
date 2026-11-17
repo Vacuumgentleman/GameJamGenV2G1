@@ -86,8 +86,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  openSound: {fileID: 0}
-  closeSound: {fileID: 0}
+  openSound: {fileID: 8300000, guid: bdff0b70584ff214ea67a7246d1a0987, type: 3}
+  closeSound: {fileID: 8300000, guid: 0973c5165eaaa564494eb4c871769f5d, type: 3}
   openPrompt: Abrir
   closePrompt: Cerrar
   onOpened:
@@ -100,6 +100,10 @@ MonoBehaviour:
   openAngle: 90
   barricadedDialogue: {fileID: 0}
   lockedSound: {fileID: 0}
+  breakDuration: 0.15
+  breakAngle: 110
+  breakSound: {fileID: 0}
+  breakVolume: 1
 --- !u!114 &7237682327692664985
 MonoBehaviour:
   m_ObjectHideFlags: 0

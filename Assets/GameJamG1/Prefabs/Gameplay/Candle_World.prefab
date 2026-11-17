@@ -166,7 +166,7 @@ MonoBehaviour:
   flagsToSetOnInteract: []
   oneShot: 0
   hideWhenConsumed: 0
-  interactSound: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: 13852986958f4714aa0aff994d728cf7, type: 3}
   onInteract:
     m_PersistentCalls:
       m_Calls: []

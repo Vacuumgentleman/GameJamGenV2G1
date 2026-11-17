@@ -135,7 +135,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e22de23c40fa809ad2c3cc629ac68f0e, type: 2}
   oneShot: 0
   hideWhenConsumed: 0
-  interactSound: {fileID: 0}
+  interactSound: {fileID: 8300000, guid: 1df827e6682794d41bc81c82eb747f68, type: 3}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
