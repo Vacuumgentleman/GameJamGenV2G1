@@ -166,8 +166,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  openSound: {fileID: 0}
-  closeSound: {fileID: 0}
+  openSound: {fileID: 8300000, guid: 77c13309e14f5da4a8da7c65956a3072, type: 3}
+  closeSound: {fileID: 8300000, guid: 61180b2da48b4574abb5b5425db441df, type: 3}
   openPrompt: Abrir
   closePrompt: Cerrar
   onOpened:
