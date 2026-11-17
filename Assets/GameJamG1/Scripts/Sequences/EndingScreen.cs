@@ -25,11 +25,36 @@ namespace GameJamG1.Sequences
         private CanvasGroup background;
         private CanvasGroup textGroup;
         private TMP_Text label;
+        private AudioSource typeSource;
+        private AudioClip[] typeClips;
+        private AudioClip lineEndClip;
 
-        public static IEnumerator Show(DialogueSequence text, float fadeDuration)
+        public static IEnumerator Show(DialogueSequence text, float fadeDuration, AudioClip[] typeClips = null, AudioClip lineEndClip = null)
         {
             var screen = Create();
+            screen.typeClips = typeClips;
+            screen.lineEndClip = lineEndClip;
+            screen.typeSource = screen.gameObject.AddComponent<AudioSource>();
+            screen.typeSource.playOnAwake = false;
+            screen.typeSource.spatialBlend = 0f;
+            screen.typeSource.ignoreListenerPause = true;
             yield return screen.Run(text, fadeDuration);
+        }
+
+        // Golpe de tecla de maquina de escribir por cada letra que aparece.
+        private void PlayKey()
+        {
+            if (typeClips == null || typeClips.Length == 0)
+            {
+                return;
+            }
+
+            var clip = typeClips[Random.Range(0, typeClips.Length)];
+            if (clip != null)
+            {
+                typeSource.pitch = Random.Range(0.95f, 1.05f);
+                typeSource.PlayOneShot(clip, 0.7f);
+            }
         }
 
         private static EndingScreen Create()
@@ -133,6 +158,7 @@ namespace GameJamG1.Sequences
             var total = time + CharFade;
             var elapsed = 0f;
             var skipFrom = Time.unscaledTime + 0.4f;
+            var nextKey = 0;
             ApplyAlphas(starts, 0f);
 
             while (elapsed < total)
@@ -143,11 +169,32 @@ namespace GameJamG1.Sequences
                 }
 
                 elapsed += Time.unscaledDeltaTime;
+
+                // Una tecla por letra visible que empieza a aparecer (los espacios no suenan).
+                var keyed = false;
+                while (nextKey < count && starts[nextKey] <= elapsed)
+                {
+                    if (!keyed && !char.IsWhiteSpace(info.characterInfo[nextKey].character))
+                    {
+                        PlayKey();
+                        keyed = true;
+                    }
+
+                    nextKey++;
+                }
+
                 ApplyAlphas(starts, elapsed);
                 yield return null;
             }
 
             ApplyAlphas(starts, float.MaxValue);
+
+            if (lineEndClip != null)
+            {
+                typeSource.pitch = 1f;
+                typeSource.PlayOneShot(lineEndClip, 0.8f);
+            }
+
             yield return null;
         }
 
