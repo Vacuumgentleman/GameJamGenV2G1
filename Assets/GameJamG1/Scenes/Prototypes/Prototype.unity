@@ -991,7 +991,7 @@ MonoBehaviour:
   flagsToSetOnInteract: []
   oneShot: 1
   hideWhenConsumed: 0
-  interactSound: {fileID: 8300000, guid: e90e63d92d4e7fa45a1cbebbf903b479, type: 3}
+  interactSound: {fileID: 0}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -16687,9 +16687,9 @@ MonoBehaviour:
   charsPerSecond: 30
   minDuration: 1.5
   holdTime: 1
-  blipClip: {fileID: 8300000, guid: 0f9f1247d23eafc4f64f7f06762d35b2, type: 3}
+  blipClip: {fileID: 8300000, guid: ec596547ffa2b9a45903e25942cd8538, type: 3}
   blipEveryNChars: 2
-  blipPitchRange: {x: 0.9, y: 1.1}
+  blipPitchRange: {x: 0.8, y: 0.85}
   blipVolume: 0.5
   fadeDuration: 0.25
 --- !u!82 &549986035
@@ -19003,7 +19003,7 @@ MonoBehaviour:
   flagsToSetOnInteract: []
   oneShot: 1
   hideWhenConsumed: 0
-  interactSound: {fileID: 8300000, guid: e90e63d92d4e7fa45a1cbebbf903b479, type: 3}
+  interactSound: {fileID: 0}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -25274,7 +25274,7 @@ MonoBehaviour:
   flagsToSetOnInteract: []
   oneShot: 1
   hideWhenConsumed: 0
-  interactSound: {fileID: 8300000, guid: e90e63d92d4e7fa45a1cbebbf903b479, type: 3}
+  interactSound: {fileID: 0}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -30122,7 +30122,7 @@ MonoBehaviour:
   flagsToSetOnInteract: []
   oneShot: 1
   hideWhenConsumed: 0
-  interactSound: {fileID: 8300000, guid: e90e63d92d4e7fa45a1cbebbf903b479, type: 3}
+  interactSound: {fileID: 0}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
