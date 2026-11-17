@@ -11,7 +11,7 @@ namespace GameJamG1.Interaction
     {
         [Header("Prompt")]
         [Tooltip("Text shown under the crosshair while this object is targeted.")]
-        [SerializeField] private string promptText = "Interact";
+        [SerializeField] private string promptText = "Interactuar";
 
         [Header("Conditions")]
         [Tooltip("The object stays locked until every flag in this list is active.")]
@@ -104,6 +104,17 @@ namespace GameJamG1.Interaction
         public void Deactivate()
         {
             Consume();
+        }
+
+        // Devuelve el objeto a su estado sin usar (para repetir una escena tras morir).
+        public virtual void ResetInteraction()
+        {
+            consumed = false;
+
+            if (!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+            }
         }
 
         protected virtual bool OnInteract(PlayerInteractor interactor)

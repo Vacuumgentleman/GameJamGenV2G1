@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WatchingEnemyDialogue
   m_EditorClassIdentifier: Assembly-CSharp::GameJamG1.Dialogue.DialogueSequence
   lines:
-  - text: 
+  - text: "Siento que algo me observa aqu\xED abajo..."
     durationOverride: 0
     sound: {fileID: 0}
   lockPlayer: 0

@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 7385442997213469786}
   - {fileID: 6701029229295750106}
-  - {fileID: 990000000000012}
+  - {fileID: 6018454419547461886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7077024620126455549
@@ -50,8 +50,8 @@ MonoBehaviour:
   lightComponent: {fileID: 1426378548585080860}
   flickerAmount: 0.3
   flickerSpeed: 12
-  onSound: {fileID: 0}
-  offSound: {fileID: 0}
+  onSound: {fileID: 8300000, guid: f3d363311a083954ea30c99ae9e34c28, type: 3}
+  offSound: {fileID: 8300000, guid: bb28c8de0070f0745a95984f9bb296a7, type: 3}
   startsLit: 0
   burnTimePerMatch: 60
   noMatchesDialogue: {fileID: 11400000, guid: 7530b1e7e335df74dbd6ee1bf7dee5cc, type: 2}
@@ -243,11 +243,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!4 &990000000000012 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6018599167634602229, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
-  m_PrefabInstance: {fileID: 990000000000011}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &990000000000011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,6 +251,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1581933055393544575}
     m_Modifications:
+    - target: {fileID: 6018599167634602229, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018599167634602229, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018599167634602229, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6018599167634602229, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -296,20 +303,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6018599167634602229, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018599167634602229, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6018599167634602229, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
+--- !u!4 &6018454419547461886 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6018599167634602229, guid: 7f13b5c64dc22cc4fabc02d1783bd7ea, type: 3}
+  m_PrefabInstance: {fileID: 990000000000011}
+  m_PrefabAsset: {fileID: 0}

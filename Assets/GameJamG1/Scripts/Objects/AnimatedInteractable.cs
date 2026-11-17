@@ -25,6 +25,7 @@ namespace GameJamG1.Objects
 
         private Coroutine routine;
         private float progress;
+        private float activeDuration = 0.8f;
 
         public bool IsOpen { get; private set; }
         public bool IsMoving => routine != null;
@@ -36,15 +37,22 @@ namespace GameJamG1.Objects
 
         public void SetOpen(bool open)
         {
+            SetOpen(open, openDuration, true);
+        }
+
+        protected void SetOpen(bool open, float duration, bool playSound)
+        {
             if (open == IsOpen || !isActiveAndEnabled)
             {
                 return;
             }
 
+            activeDuration = Mathf.Max(0.05f, duration);
+
             IsOpen = open;
 
             var clip = open ? openSound : closeSound;
-            if (clip != null)
+            if (playSound && clip != null)
             {
                 AudioSource.PlayClipAtPoint(clip, transform.position);
             }
@@ -92,7 +100,7 @@ namespace GameJamG1.Objects
 
             while (elapsed < 1f)
             {
-                elapsed += Time.deltaTime / openDuration;
+                elapsed += Time.deltaTime / activeDuration;
                 progress = Mathf.Lerp(start, target, curve.Evaluate(Mathf.Clamp01(elapsed)));
                 Evaluate(progress);
                 yield return null;

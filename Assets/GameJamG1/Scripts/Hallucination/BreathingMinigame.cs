@@ -22,7 +22,7 @@ namespace GameJamG1.Hallucination
         [SerializeField] private RectTransform zoneMaxRing;
         [SerializeField] private Image progressFill;
         [SerializeField] private TMP_Text hintLabel;
-        [SerializeField] private string hint = "Manten ESPACIO para inhalar. Suelta para exhalar.";
+        [SerializeField] private string hint = "Mantén ESPACIO para inhalar. Suelta para exhalar.";
         [SerializeField, Min(0f)] private float fadeDuration = 0.25f;
         [SerializeField] private Color outOfZoneColor = new(1f, 1f, 1f, 0.5f);
         [SerializeField] private Color inZoneColor = new(0.5f, 1f, 0.6f, 0.8f);
@@ -116,6 +116,8 @@ namespace GameJamG1.Hallucination
             public float Drift => drift;
             public float Instability => instability;
         }
+
+        public event Action<bool> Finished;
 
         public bool IsActive { get; private set; }
 
@@ -260,6 +262,7 @@ namespace GameJamG1.Hallucination
             }
 
             (success ? onSuccess : onFail).Invoke();
+            Finished?.Invoke(success);
         }
 
         private void Cleanup()

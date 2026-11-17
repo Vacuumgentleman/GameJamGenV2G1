@@ -47,6 +47,8 @@ namespace GameJamG1.Barricade
         private readonly List<Renderer[]> ghostRenderers = new();
         private MaterialPropertyBlock block;
         private ItemHolder holder;
+        private bool ghostsShown;
+        private Collider blockCollider;
 
         public int CurrentPlanks { get; private set; }
 
@@ -54,14 +56,21 @@ namespace GameJamG1.Barricade
 
         public bool IsComplete => CurrentPlanks >= requiredPlanks;
 
+        // Hasta que la historia pida tapiar (requiredFlags), la barricada no existe para el jugador:
+        // sin prompt, sin resaltado y sin siluetas de las tablas.
+        private bool Available => AreRequiredFlagsActive();
+
+        public override bool IsLocked => false;
+
         public override string GetPrompt()
         {
-            return $"{base.GetPrompt()} ({CurrentPlanks}/{requiredPlanks})";
+            var label = string.IsNullOrEmpty(PromptText) || PromptText == "Interact" || PromptText == "Interactuar" ? "Tapiar puerta" : PromptText;
+            return $"{label} ({CurrentPlanks}/{requiredPlanks})";
         }
 
         public override bool CanInteract()
         {
-            return base.CanInteract() && !IsComplete && (door == null || !door.IsOpen);
+            return base.CanInteract() && Available && !IsComplete && (door == null || !door.IsOpen);
         }
 
         public void TakeDamage(float amount)
@@ -88,7 +97,18 @@ namespace GameJamG1.Barricade
 
         private void Update()
         {
-            if (IsComplete || ghosts.Count == 0)
+            if (IsComplete)
+            {
+                return;
+            }
+
+            var available = Available;
+            if (available != ghostsShown)
+            {
+                RefreshVisuals();
+            }
+
+            if (!available || ghosts.Count == 0)
             {
                 return;
             }
@@ -223,6 +243,19 @@ namespace GameJamG1.Barricade
 
         private void RefreshVisuals()
         {
+            ghostsShown = Available;
+
+            // El collider envuelve la mirilla: solo existe mientras toca tapiar, para no taparla antes ni despues.
+            if (blockCollider == null)
+            {
+                TryGetComponent(out blockCollider);
+            }
+
+            if (blockCollider != null)
+            {
+                blockCollider.enabled = ghostsShown && !IsComplete;
+            }
+
             for (var i = 0; i < planks.Count; i++)
             {
                 if (planks[i] != null)
@@ -232,7 +265,7 @@ namespace GameJamG1.Barricade
 
                 if (i < ghosts.Count && ghosts[i] != null)
                 {
-                    ghosts[i].SetActive(i >= CurrentPlanks);
+                    ghosts[i].SetActive(ghostsShown && i >= CurrentPlanks);
                 }
             }
         }

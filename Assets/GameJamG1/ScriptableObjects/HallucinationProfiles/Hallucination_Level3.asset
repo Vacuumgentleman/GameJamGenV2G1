@@ -15,5 +15,7 @@ MonoBehaviour:
   description: Alucinacion nivel 3. Ajustar el volume profile.
   volumeProfile: {fileID: 11400000, guid: c0f13e9b993b2994a9fcbc63e27235f7, type: 2}
   intensity: 1
-  ambientClip: {fileID: 0}
-  ambientVolume: 0.5
+  distortionWobble: 0.12
+  distortionWobbleSpeed: 0.85
+  ambientClip: {fileID: 8300000, guid: ff854dab145787a4aadb1d7285bc9eb6, type: 3}
+  ambientVolume: 0.25

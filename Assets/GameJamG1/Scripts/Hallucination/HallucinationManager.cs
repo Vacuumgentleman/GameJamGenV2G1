@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace GameJamG1.Hallucination
 {
@@ -26,6 +27,11 @@ namespace GameJamG1.Hallucination
         [SerializeField] private UnityEvent<int> onLevelChanged = new();
 
         private Coroutine transition;
+        private VolumeProfile runtimeProfile;
+        private LensDistortion wobbleLens;
+        private float wobbleBase;
+        private float wobbleAmount;
+        private float wobbleSpeed;
 
         public static HallucinationManager Instance { get; private set; }
 
@@ -54,12 +60,25 @@ namespace GameJamG1.Hallucination
             Apply(true);
         }
 
+        private void Update()
+        {
+            if (wobbleLens == null || wobbleAmount <= 0f)
+            {
+                return;
+            }
+
+            var noise = Mathf.PerlinNoise(Time.time * wobbleSpeed, 0.37f) * 2f - 1f;
+            wobbleLens.intensity.value = Mathf.Clamp(wobbleBase + noise * wobbleAmount, -1f, 1f);
+        }
+
         private void OnDestroy()
         {
             if (Instance == this)
             {
                 Instance = null;
             }
+
+            DestroyRuntimeProfile();
         }
 
         public void Increase()
@@ -141,10 +160,7 @@ namespace GameJamG1.Hallucination
 
         private void ApplyProfile(HallucinationLevelProfile profile)
         {
-            if (volume != null)
-            {
-                volume.profile = profile != null ? profile.VolumeProfile : null;
-            }
+            ApplyVolumeProfile(profile);
 
             if (ambientSource == null)
             {
@@ -163,6 +179,66 @@ namespace GameJamG1.Hallucination
             ambientSource.volume = profile.AmbientVolume;
             ambientSource.loop = true;
             ambientSource.Play();
+        }
+
+        // Copia profunda del perfil: el wobble modifica la copia, nunca el asset del proyecto.
+        private void ApplyVolumeProfile(HallucinationLevelProfile profile)
+        {
+            DestroyRuntimeProfile();
+
+            if (volume == null)
+            {
+                return;
+            }
+
+            var source = profile != null ? profile.VolumeProfile : null;
+            if (source == null)
+            {
+                volume.sharedProfile = null;
+                return;
+            }
+
+            runtimeProfile = ScriptableObject.CreateInstance<VolumeProfile>();
+            runtimeProfile.name = source.name + " (Runtime)";
+            foreach (var component in source.components)
+            {
+                if (component != null)
+                {
+                    runtimeProfile.components.Add(Instantiate(component));
+                }
+            }
+
+            volume.sharedProfile = runtimeProfile;
+
+            if (profile.DistortionWobble > 0f && runtimeProfile.TryGet(out LensDistortion lens))
+            {
+                wobbleLens = lens;
+                wobbleBase = lens.intensity.value;
+                wobbleAmount = profile.DistortionWobble;
+                wobbleSpeed = profile.DistortionWobbleSpeed;
+            }
+        }
+
+        private void DestroyRuntimeProfile()
+        {
+            wobbleLens = null;
+            wobbleAmount = 0f;
+
+            if (runtimeProfile == null)
+            {
+                return;
+            }
+
+            foreach (var component in runtimeProfile.components)
+            {
+                if (component != null)
+                {
+                    Destroy(component);
+                }
+            }
+
+            Destroy(runtimeProfile);
+            runtimeProfile = null;
         }
 
         private static float TargetWeight(HallucinationLevelProfile profile)

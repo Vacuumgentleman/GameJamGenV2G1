@@ -15,5 +15,7 @@ MonoBehaviour:
   description: Sin efecto.
   volumeProfile: {fileID: 0}
   intensity: 1
+  distortionWobble: 0
+  distortionWobbleSpeed: 0.4
   ambientClip: {fileID: 0}
   ambientVolume: 0.5

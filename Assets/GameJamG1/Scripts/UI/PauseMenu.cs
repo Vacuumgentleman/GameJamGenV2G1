@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using GameJamG1.Utils;
 
+[DefaultExecutionOrder(100)]
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;

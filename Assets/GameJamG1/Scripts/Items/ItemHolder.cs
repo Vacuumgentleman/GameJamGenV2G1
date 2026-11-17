@@ -5,27 +5,42 @@ using UnityEngine;
 
 namespace GameJamG1.Items
 {
+    // Dos manos: la principal (vela u objeto cargado) y la secundaria (linterna).
+    // La linterna convive con un objeto Carry; la vela (slot Light) es exclusiva y suelta todo lo demas.
     [RequireComponent(typeof(PlayerInputReader))]
     public class ItemHolder : MonoBehaviour
     {
         [Header("Anchors")]
-        [Tooltip("Hand position for light items.")]
+        [Tooltip("Hand position for light items (candle and flashlight).")]
         [SerializeField] private Transform handAnchorLight;
         [Tooltip("Hand position for carried items.")]
         [SerializeField] private Transform handAnchorCarry;
 
+        [Header("Drop")]
+        [Tooltip("Sideways offset between items dropped at the same time.")]
+        [SerializeField, Min(0f)] private float dropSpacing = 0.35f;
+
+        private sealed class Held
+        {
+            public ItemData Data;
+            public GameObject Instance;
+            public LightSource Light;
+            public EquippableItem World;
+        }
+
         private PlayerInputReader input;
-        private GameObject heldInstance;
-        private LightSource lightSource;
-        private EquippableItem heldWorldItem;
+        private Held main;
+        private Held offHand;
 
-        public ItemData CurrentItem { get; private set; }
+        public ItemData CurrentItem => main?.Data ?? offHand?.Data;
 
-        public ItemData CurrentLight => CurrentItem != null && CurrentItem.Slot == ItemSlot.Light ? CurrentItem : null;
+        public ItemData CurrentLight => offHand?.Data ?? (main != null && main.Data.Slot == ItemSlot.Light ? main.Data : null);
 
-        public ItemData CurrentCarry => CurrentItem != null && CurrentItem.Slot == ItemSlot.Carry ? CurrentItem : null;
+        public ItemData CurrentCarry => main != null && main.Data.Slot == ItemSlot.Carry ? main.Data : null;
 
-        public LightSource CurrentLightSource => lightSource;
+        public ItemData CurrentOffHand => offHand?.Data;
+
+        public LightSource CurrentLightSource => offHand?.Light != null ? offHand.Light : main?.Light;
 
         public event Action<ItemSlot, ItemData> SlotChanged;
 
@@ -36,9 +51,10 @@ namespace GameJamG1.Items
 
         private void Update()
         {
-            if (lightSource != null && input.ToggleLightPressed)
+            var light = CurrentLightSource;
+            if (light != null && input.ToggleLightPressed)
             {
-                lightSource.Toggle();
+                light.Toggle();
             }
         }
 
@@ -49,61 +65,101 @@ namespace GameJamG1.Items
                 return false;
             }
 
-            DropCurrent(source);
-            Hold(data, source);
+            var dropIndex = 0;
+
+            switch (data.Slot)
+            {
+                case ItemSlot.OffHand:
+                    Drop(ref offHand, source, ref dropIndex);
+                    if (main != null && main.Data.Slot == ItemSlot.Light)
+                    {
+                        Drop(ref main, source, ref dropIndex);
+                    }
+
+                    offHand = Hold(data, source, handAnchorLight);
+                    break;
+
+                case ItemSlot.Light:
+                    Drop(ref main, source, ref dropIndex);
+                    Drop(ref offHand, source, ref dropIndex);
+                    main = Hold(data, source, handAnchorLight);
+                    break;
+
+                default:
+                    Drop(ref main, source, ref dropIndex);
+                    main = Hold(data, source, handAnchorCarry);
+                    break;
+            }
+
             NotifyPickup(data);
             return true;
         }
 
         public void Clear(ItemSlot slot)
         {
-            if (CurrentItem != null && CurrentItem.Slot == slot)
+            if (main != null && main.Data.Slot == slot)
             {
-                Release(true);
+                Release(ref main, true);
+            }
+
+            if (offHand != null && offHand.Data.Slot == slot)
+            {
+                Release(ref offHand, true);
             }
         }
 
         public void ExtinguishLight()
         {
-            if (lightSource != null)
+            if (offHand?.Light != null)
             {
-                lightSource.Extinguish();
+                offHand.Light.Extinguish();
+            }
+
+            if (main?.Light != null)
+            {
+                main.Light.Extinguish();
             }
         }
 
-        private void Hold(ItemData data, EquippableItem source)
+        private Held Hold(ItemData data, EquippableItem source, Transform anchor)
         {
-            var anchor = data.Slot == ItemSlot.Light ? handAnchorLight : handAnchorCarry;
+            var instance = Instantiate(data.HeldPrefab, anchor);
+            instance.transform.SetLocalPositionAndRotation(data.HandLocalPosition, data.HandLocalRotation);
 
-            heldInstance = Instantiate(data.HeldPrefab, anchor);
-            heldInstance.transform.SetLocalPositionAndRotation(data.HandLocalPosition, data.HandLocalRotation);
-
-            lightSource = heldInstance.GetComponent<LightSource>();
-            if (lightSource != null && source != null)
+            var held = new Held
             {
-                lightSource.Restore(source.State);
+                Data = data,
+                Instance = instance,
+                Light = instance.GetComponent<LightSource>(),
+                World = source
+            };
+
+            if (held.Light != null && source != null)
+            {
+                held.Light.Restore(source.State);
             }
 
-            heldWorldItem = source;
-            CurrentItem = data;
             SlotChanged?.Invoke(data.Slot, data);
+            return held;
         }
 
-        private void DropCurrent(EquippableItem replacing)
+        private void Drop(ref Held held, EquippableItem replacing, ref int dropIndex)
         {
-            if (CurrentItem == null)
+            if (held == null)
             {
                 return;
             }
 
-            var state = lightSource != null ? lightSource.Capture() : new LightRuntimeState();
+            var state = held.Light != null ? held.Light.Capture() : new LightRuntimeState();
             var position = replacing != null ? replacing.transform.position : transform.position + transform.forward;
             var rotation = replacing != null ? replacing.transform.rotation : transform.rotation;
+            position += transform.right * (dropSpacing * dropIndex);
+            dropIndex++;
 
-            var world = heldWorldItem;
+            var world = held.World;
             if (world == null)
             {
-                world = SpawnWorldItem(CurrentItem, position, rotation);
+                world = SpawnWorldItem(held.Data, position, rotation);
             }
             else
             {
@@ -116,27 +172,28 @@ namespace GameJamG1.Items
                 world.gameObject.SetActive(true);
             }
 
-            Release(false);
+            Release(ref held, false);
         }
 
-        private void Release(bool destroyWorldItem)
+        private void Release(ref Held held, bool destroyWorldItem)
         {
-            if (heldInstance != null)
+            if (held == null)
             {
-                Destroy(heldInstance);
+                return;
             }
 
-            if (destroyWorldItem && heldWorldItem != null)
+            if (held.Instance != null)
             {
-                Destroy(heldWorldItem.gameObject);
+                Destroy(held.Instance);
             }
 
-            var slot = CurrentItem != null ? CurrentItem.Slot : ItemSlot.Carry;
+            if (destroyWorldItem && held.World != null)
+            {
+                Destroy(held.World.gameObject);
+            }
 
-            heldInstance = null;
-            lightSource = null;
-            heldWorldItem = null;
-            CurrentItem = null;
+            var slot = held.Data.Slot;
+            held = null;
             SlotChanged?.Invoke(slot, null);
         }
 

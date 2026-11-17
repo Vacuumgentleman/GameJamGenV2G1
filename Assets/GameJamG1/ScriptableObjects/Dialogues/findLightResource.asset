@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: findLightResource
   m_EditorClassIdentifier: Assembly-CSharp::GameJamG1.Dialogue.DialogueSequence
   lines:
-  - text: "Deber\xEDa buscar algo para iluminar ah\xED abajo. "
+  - text: "Deber\xEDa buscar algo para iluminar ah\xED abajo."
+    durationOverride: 0
+    sound: {fileID: 0}
+  - text: "Dej\xE9 una linterna en la sala, cerca de la entrada... y arriba hab\xEDa
+      una vela con cerillas."
     durationOverride: 0
     sound: {fileID: 0}
   lockPlayer: 0

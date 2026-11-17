@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameJamG1.Items.ItemData
   id: flashlight
   displayName: Linterna
-  slot: 0
+  slot: 2
   heldPrefab: {fileID: 8993226241317145083, guid: 6a0ba216849ec3448b43b24ca7316131, type: 3}
   worldPrefab: {fileID: 807737938812949533, guid: 25c47142aad33484186680e00af8aefe, type: 3}
   handLocalPosition: {x: 0, y: 0, z: 0}
   handLocalEulerAngles: {x: 0, y: 0, z: 0}
-  pickupSound: {fileID: 0}
-  pickupDialogue: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 0fc9a3aa853bb774d9a8c677d7e306a1, type: 3}
+  pickupDialogue: {fileID: 11400000, guid: 973054f49934ab04a81c6ea6143c2e1a, type: 2}

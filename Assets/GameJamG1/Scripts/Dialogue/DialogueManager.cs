@@ -60,6 +60,12 @@ namespace GameJamG1.Dialogue
             Play(sequence, true);
         }
 
+        public void Stop()
+        {
+            queue.Clear();
+            StopCurrent();
+        }
+
         public void Enqueue(DialogueSequence sequence)
         {
             Play(sequence, false);

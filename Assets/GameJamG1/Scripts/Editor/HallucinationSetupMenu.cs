@@ -139,6 +139,8 @@ namespace GameJamG1.EditorTools
                 EditorAssetUtility.SetObject(profile, "volumeProfile", CreateVolumeProfile(level));
             }
 
+            ConfigureLevelProfile(profile, level);
+
             EditorUtility.SetDirty(profile);
             AssetDatabase.SaveAssets();
             return profile;
@@ -155,23 +157,53 @@ namespace GameJamG1.EditorTools
 
             var profile = ScriptableObject.CreateInstance<VolumeProfile>();
             AssetDatabase.CreateAsset(profile, path);
+            ConfigureVolumeProfile(profile, level);
+            return profile;
+        }
 
-            var vignette = profile.Add<Vignette>(true);
-            vignette.intensity.Override(0.15f + 0.15f * level);
-            vignette.smoothness.Override(0.6f);
-            AssetDatabase.AddObjectToAsset(vignette, profile);
+        // Alucinacion = distorsion y ruido por encima del volumen base de la escena, nunca oscuridad.
+        // Solo se activa el override de los parametros listados: Add<T>(true) activaria tambien
+        // postExposure/contrast y anularia el +exposure del volumen base, dejando la escena negra.
+        // Grano y aberracion deben superar los del volumen base (0.51 y 0.2) para notarse.
+        internal static void ConfigureVolumeProfile(VolumeProfile profile, int level)
+        {
+            var t = Mathf.Clamp01(level / 3f);
 
-            var colors = profile.Add<ColorAdjustments>(true);
-            colors.saturation.Override(-15f * level);
-            AssetDatabase.AddObjectToAsset(colors, profile);
+            foreach (var component in profile.components.ToArray())
+            {
+                profile.components.Remove(component);
+                Object.DestroyImmediate(component, true);
+            }
 
-            var aberration = profile.Add<ChromaticAberration>(true);
-            aberration.intensity.Override(0.15f * level);
+            var grain = profile.Add<FilmGrain>();
+            grain.type.Override(FilmGrainLookup.Medium4);
+            grain.intensity.Override(Mathf.Lerp(0.6f, 0.95f, t));
+            grain.response.Override(0.6f);
+            AssetDatabase.AddObjectToAsset(grain, profile);
+
+            var aberration = profile.Add<ChromaticAberration>();
+            aberration.intensity.Override(Mathf.Lerp(0.3f, 0.8f, t));
             AssetDatabase.AddObjectToAsset(aberration, profile);
+
+            var lens = profile.Add<LensDistortion>();
+            lens.intensity.Override(Mathf.Lerp(-0.1f, -0.3f, t));
+            lens.scale.Override(Mathf.Lerp(1.02f, 1.08f, t));
+            AssetDatabase.AddObjectToAsset(lens, profile);
+
+            var colors = profile.Add<ColorAdjustments>();
+            colors.saturation.Override(Mathf.Lerp(-25f, -40f, t));
+            AssetDatabase.AddObjectToAsset(colors, profile);
 
             EditorUtility.SetDirty(profile);
             AssetDatabase.SaveAssets();
-            return profile;
+        }
+
+        internal static void ConfigureLevelProfile(HallucinationLevelProfile profile, int level)
+        {
+            var so = new SerializedObject(profile);
+            so.FindProperty("distortionWobble").floatValue = level <= 0 ? 0f : Mathf.Lerp(0.05f, 0.12f, Mathf.Clamp01(level / 3f));
+            so.FindProperty("distortionWobbleSpeed").floatValue = 0.4f + 0.15f * level;
+            so.ApplyModifiedPropertiesWithoutUndo();
         }
 
         internal static void EnsureLevelLabel()

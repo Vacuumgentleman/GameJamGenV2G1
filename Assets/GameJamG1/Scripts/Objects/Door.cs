@@ -9,7 +9,8 @@ namespace GameJamG1.Objects
         Closed,
         Open,
         Locked,
-        Barricaded
+        Barricaded,
+        Broken
     }
 
     public class Door : AnimatedInteractable
@@ -24,15 +25,31 @@ namespace GameJamG1.Objects
         [SerializeField] private DialogueSequence barricadedDialogue;
         [SerializeField] private AudioClip lockedSound;
 
+        [Header("Break")]
+        [Tooltip("Seconds the door takes to fly open when the monster breaks it.")]
+        [SerializeField, Min(0.05f)] private float breakDuration = 0.15f;
+        [Tooltip("Angle of a broken door. Wider than a normal open door.")]
+        [SerializeField] private float breakAngle = 110f;
+        [SerializeField] private AudioClip breakSound;
+        [SerializeField, Range(0f, 1f)] private float breakVolume = 1f;
+
         private Quaternion closedRotation;
         private bool barricaded;
+        private float currentAngle;
 
-        public override bool IsLocked => barricaded || base.IsLocked;
+        public bool IsBroken { get; private set; }
+
+        public override bool IsLocked => !IsBroken && (barricaded || base.IsLocked);
 
         public DoorState State
         {
             get
             {
+                if (IsBroken)
+                {
+                    return DoorState.Broken;
+                }
+
                 if (barricaded)
                 {
                     return DoorState.Barricaded;
@@ -47,9 +64,41 @@ namespace GameJamG1.Objects
             }
         }
 
+        public override bool CanInteract()
+        {
+            return !IsBroken && base.CanInteract();
+        }
+
         public void SetBarricaded(bool value)
         {
             barricaded = value;
+        }
+
+        // El monstruo la revienta: se abre de golpe hacia el lado contrario a el y queda inservible.
+        public void Break(Vector3 breakerPosition)
+        {
+            if (IsBroken || barricaded || !isActiveAndEnabled)
+            {
+                return;
+            }
+
+            IsBroken = true;
+            currentAngle = AwayAngle(breakerPosition);
+            SetHighlight(false);
+
+            if (breakSound != null)
+            {
+                AudioSource.PlayClipAtPoint(breakSound, transform.position, breakVolume);
+            }
+
+            if (IsOpen)
+            {
+                // Ya estaba abierta: solo la empuja hasta el angulo de rotura.
+                Evaluate(1f);
+                return;
+            }
+
+            SetOpen(true, breakDuration, breakSound == null);
         }
 
         public override void InteractLocked(PlayerInteractor interactor)
@@ -72,16 +121,32 @@ namespace GameJamG1.Objects
             }
 
             closedRotation = pivot.localRotation;
+            currentAngle = openAngle;
         }
 
         protected override void Evaluate(float value)
         {
-            pivot.localRotation = closedRotation * Quaternion.Euler(0f, openAngle * value, 0f);
+            pivot.localRotation = closedRotation * Quaternion.Euler(0f, currentAngle * value, 0f);
         }
 
         protected override DialogueSequence ResolveLockedDialogue()
         {
             return barricaded && barricadedDialogue != null ? barricadedDialogue : base.ResolveLockedDialogue();
+        }
+
+        // Elige el sentido de giro que aleja la hoja de la puerta del monstruo.
+        private float AwayAngle(Vector3 breakerPosition)
+        {
+            var leaf = GetComponentInChildren<Renderer>();
+            var center = leaf != null ? leaf.bounds.center : pivot.position;
+            var offset = center - pivot.position;
+            var parentRotation = pivot.parent != null ? pivot.parent.rotation : Quaternion.identity;
+            var axis = parentRotation * closedRotation * Vector3.up;
+
+            var positive = pivot.position + Quaternion.AngleAxis(breakAngle, axis) * offset;
+            var negative = pivot.position + Quaternion.AngleAxis(-breakAngle, axis) * offset;
+
+            return (positive - breakerPosition).sqrMagnitude >= (negative - breakerPosition).sqrMagnitude ? breakAngle : -breakAngle;
         }
     }
 }

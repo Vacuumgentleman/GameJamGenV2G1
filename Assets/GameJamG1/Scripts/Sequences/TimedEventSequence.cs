@@ -32,7 +32,9 @@ namespace GameJamG1.Sequences
 
         public IReadOnlyList<Step> Steps => steps;
 
-        public bool IsPlaying => routine != null;
+        private bool playing;
+
+        public bool IsPlaying => playing;
 
         public event Action Finished;
 
@@ -47,6 +49,7 @@ namespace GameJamG1.Sequences
         private void OnDisable()
         {
             routine = null;
+            playing = false;
         }
 
         public void Play()
@@ -57,6 +60,7 @@ namespace GameJamG1.Sequences
             }
 
             hasPlayed = true;
+            playing = true;
             routine = StartCoroutine(Run());
         }
 
@@ -69,6 +73,7 @@ namespace GameJamG1.Sequences
 
             StopCoroutine(routine);
             routine = null;
+            playing = false;
         }
 
         private IEnumerator Run()
@@ -80,6 +85,7 @@ namespace GameJamG1.Sequences
             }
 
             routine = null;
+            playing = false;
             onFinished.Invoke();
             Finished?.Invoke();
         }

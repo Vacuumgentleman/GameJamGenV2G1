@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flashlight_Depleted
   m_EditorClassIdentifier: Assembly-CSharp::GameJamG1.Dialogue.DialogueSequence
   lines:
-  - text: Se acabo la pila. Ya no sirve.
+  - text: "Se acab\xF3 la pila. Ya no sirve."
     durationOverride: 0
     sound: {fileID: 0}
   lockPlayer: 0

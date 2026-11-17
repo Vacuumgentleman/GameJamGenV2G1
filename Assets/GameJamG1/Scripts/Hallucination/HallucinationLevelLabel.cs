@@ -7,7 +7,7 @@ namespace GameJamG1.Hallucination
     {
         [SerializeField] private TMP_Text label;
         [Tooltip("{0} is the current level.")]
-        [SerializeField] private string format = "Alucinacion: {0}";
+        [SerializeField] private string format = "Alucinación: {0}";
 
         private HallucinationManager manager;
 
