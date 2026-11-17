@@ -29,6 +29,10 @@ namespace GameJamG1.Gameplay
         [SerializeField, Min(0f)] private float endHold = 1.5f;
         [Tooltip("Seconds of the fast fade to black before the ending text.")]
         [SerializeField, Min(0f)] private float endingFadeDuration = 0.35f;
+        [Tooltip("Typewriter keys played as each letter of the ending text appears.")]
+        [SerializeField] private AudioClip[] endingTypeClips;
+        [Tooltip("Played when a line of the ending text is complete (typewriter bell).")]
+        [SerializeField] private AudioClip endingLineEndClip;
 
         [Header("Events")]
         [SerializeField] private UnityEvent onPlayerDied = new();
@@ -168,7 +172,7 @@ namespace GameJamG1.Gameplay
                 DialogueManager.Instance.Stop();
             }
 
-            yield return EndingScreen.Show(text, endingFadeDuration);
+            yield return EndingScreen.Show(text, endingFadeDuration, endingTypeClips, endingLineEndClip);
             LoadMenu();
         }
 

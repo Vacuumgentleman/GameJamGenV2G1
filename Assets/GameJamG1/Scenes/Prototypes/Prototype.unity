@@ -4072,6 +4072,11 @@ MonoBehaviour:
   menuSceneName: Main Menu
   endHold: 1.5
   endingFadeDuration: 0.35
+  endingTypeClips:
+  - {fileID: 8300000, guid: ec596547ffa2b9a45903e25942cd8538, type: 3}
+  - {fileID: 8300000, guid: 1dc1ee999f2a6aa4c8c885a883265b0c, type: 3}
+  - {fileID: 8300000, guid: 6b0a0cd7bd3379b4bafcf76cd91831f2, type: 3}
+  endingLineEndClip: {fileID: 8300000, guid: 0ac99255c7c242748bd5120c9be243f1, type: 3}
   onPlayerDied:
     m_PersistentCalls:
       m_Calls: []
@@ -27814,6 +27819,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6922404409965353629, guid: 240271ce3d2852e4894e4543d03c9cf6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1442198818}
+    - targetCorrespondingSourceObject: {fileID: 6922404409965353629, guid: 240271ce3d2852e4894e4543d03c9cf6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1442198822}
   m_SourcePrefab: {fileID: 100100000, guid: 240271ce3d2852e4894e4543d03c9cf6, type: 3}
 --- !u!114 &1105206737 stripped
 MonoBehaviour:
@@ -34976,6 +34984,26 @@ MonoBehaviour:
   attackClip: {fileID: 8300000, guid: 8b440b4770ba12749a87cfdcd34ed7d9, type: 3}
   attackVolume: 1
   maxDistance: 25
+--- !u!114 &1442198822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442198813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43037f686e42cde4b99fe21d2b14c324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameJamG1.Enemy.MonsterApparition
+  noticeDistance: 14
+  viewMargin: 0.4
+  lookTime: 0.35
+  flickerDuration: 0.8
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  targetHeight: 1.2
 --- !u!1001 &1442674976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35039,7 +35067,7 @@ PrefabInstance:
     - target: {fileID: 2658836801377396336, guid: 277ec42ab0936434d9992fcd764733a8, type: 3}
       propertyPath: interactSound
       value: 
-      objectReference: {fileID: 8300000, guid: 424cb158a7ac52c459e41dc5d65542db, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8074129732595045447, guid: 277ec42ab0936434d9992fcd764733a8, type: 3}
       propertyPath: playOnEnable
       value: 0
