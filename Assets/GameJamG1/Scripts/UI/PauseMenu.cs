@@ -68,6 +68,7 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("resume");
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        instructionsMenu.SetActive(false);
         Debug.Log(lockController);
         lockController.Lock();
         Time.timeScale = 1f;
