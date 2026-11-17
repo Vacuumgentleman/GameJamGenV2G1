@@ -328,8 +328,8 @@ MonoBehaviour:
   lightComponent: {fileID: 2562277136024666808}
   flickerAmount: 0.05
   flickerSpeed: 12
-  onSound: {fileID: 8300000, guid: ff2c27a42deadd54190d5ea9522713f1, type: 3}
-  offSound: {fileID: 8300000, guid: 588e5a145f12e02409a30b666b19f1aa, type: 3}
+  onSound: {fileID: 8300000, guid: c97513ccb6ec69a408291ab57eb9e49c, type: 3}
+  offSound: {fileID: 8300000, guid: c97513ccb6ec69a408291ab57eb9e49c, type: 3}
   startsLit: 0
   batteryDuration: 120
   lowBatteryThreshold: 20
