@@ -50,7 +50,7 @@ MonoBehaviour:
   lightComponent: {fileID: 1426378548585080860}
   flickerAmount: 0.3
   flickerSpeed: 12
-  onSound: {fileID: 8300000, guid: f3d363311a083954ea30c99ae9e34c28, type: 3}
+  onSound: {fileID: 8300000, guid: af5a089125c45c84a9033cbed90e5f35, type: 3}
   offSound: {fileID: 8300000, guid: bb28c8de0070f0745a95984f9bb296a7, type: 3}
   startsLit: 0
   burnTimePerMatch: 60
