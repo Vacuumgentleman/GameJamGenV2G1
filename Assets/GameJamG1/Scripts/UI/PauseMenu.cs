@@ -88,6 +88,9 @@ public class PauseMenu : MonoBehaviour
     }
     public void BackToMenu()
     {
+        // Se sale desde la pausa: sin esto el menu arrancaria con el tiempo congelado.
+        Time.timeScale = 1f;
+        isPaused = false;
         SceneManager.LoadScene("Main Menu");
     }
 }

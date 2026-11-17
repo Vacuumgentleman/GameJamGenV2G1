@@ -19,5 +19,5 @@ MonoBehaviour:
   worldPrefab: {fileID: 4160315210797267872, guid: 67786cf09f8fb2a459b74d4b4ce1c727, type: 3}
   handLocalPosition: {x: 0, y: 0, z: 0}
   handLocalEulerAngles: {x: 0, y: 0, z: 0}
-  pickupSound: {fileID: 8300000, guid: 0fc9a3aa853bb774d9a8c677d7e306a1, type: 3}
+  pickupSound: {fileID: 8300000, guid: 13852986958f4714aa0aff994d728cf7, type: 3}
   pickupDialogue: {fileID: 11400000, guid: 137799cb669eb034cbeb004921e4c4da, type: 2}

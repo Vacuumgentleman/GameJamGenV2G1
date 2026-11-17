@@ -17,37 +17,44 @@ public class MenuManager : MonoBehaviour
     
     void Start()
     {
+        // Los listeners se registran una sola vez: antes se volvian a añadir cada vez que se volvia
+        // a la pantalla de titulo, y un clic en Empezar acababa cargando la escena varias veces.
+        startButton.onClick.AddListener(StartGame);
+        settingsButton.onClick.AddListener(SettingsMenu);
+        exitButton.onClick.AddListener(ExitGame);
+        creditsButton.onClick.AddListener(CreditsMenu);
+        backButton[0].onClick.AddListener(TitleScreen);
+        backButton[1].onClick.AddListener(TitleScreen);
+
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         TitleScreen();
     }
+
     void TitleScreen()
     {
         titleScreen.SetActive(true);
-        startButton.onClick.AddListener(StartGame);
-        settingsButton.onClick.AddListener(SettingsMenu);;
-        exitButton.onClick.AddListener(ExitGame);
-        creditsButton.onClick.AddListener(CreditsMenu);
         settingsMenu.SetActive(false);
         creditsMenu.SetActive(false);
     }
 
     void StartGame()
     {
+        startButton.interactable = false;
         SceneManager.LoadScene("Prototype");
-        
     }
 
     void SettingsMenu()
     {
         titleScreen.SetActive(false);
         settingsMenu.SetActive(true);
-        backButton[0].onClick.AddListener(TitleScreen);
     }
 
     void CreditsMenu()
     {
         creditsMenu.SetActive(true);
         titleScreen.SetActive(false);
-        backButton[1].onClick.AddListener(TitleScreen);
     }
 
     void ExitGame()

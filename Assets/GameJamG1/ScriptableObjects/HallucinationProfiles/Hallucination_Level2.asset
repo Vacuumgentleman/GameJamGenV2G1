@@ -17,5 +17,5 @@ MonoBehaviour:
   intensity: 1
   distortionWobble: 0.096666664
   distortionWobbleSpeed: 0.70000005
-  ambientClip: {fileID: 8300000, guid: 074f91adddc3cdc46971cd4b0d31065f, type: 3}
+  ambientClip: {fileID: 8300000, guid: 1a92bbca6d7d94c4dbc1fe278247ea26, type: 3}
   ambientVolume: 0.2
