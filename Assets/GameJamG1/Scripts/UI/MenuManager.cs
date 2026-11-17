@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,7 +23,7 @@ public class MenuManager : MonoBehaviour
     {
         titleScreen.SetActive(true);
         startButton.onClick.AddListener(StartGame);
-        settingsButton.onClick.AddListener(SettingsMenu);
+        settingsButton.onClick.AddListener(SettingsMenu);;
         exitButton.onClick.AddListener(ExitGame);
         creditsButton.onClick.AddListener(CreditsMenu);
         settingsMenu.SetActive(false);
@@ -32,6 +33,7 @@ public class MenuManager : MonoBehaviour
     void StartGame()
     {
         SceneManager.LoadScene("Prototype");
+        
     }
 
     void SettingsMenu()
@@ -52,4 +54,27 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    /*public AudioClip[] buttonsSFX; // Array de sonidos
+    //public float stepsFrequency = 0.5f; // Determina la velocidad de los pasos
+    //private PlayerController playerMovement; // Hace referencia al movimiento dentro del controlador
+
+    // Para que funcione tenemos que actualizar el movimiento de private a public
+    IEnumerator ButtonSound()
+    {
+        while (true)
+        {
+            if (playerMovement.movimiento.magnitude > 0.1f)
+            {
+                int randomSound = Random.Range(0, 3);
+                AudioManager.instance.PlaySFX(footstepsSFX[randomSound], 0.5f, 0.95f, 1.02f);
+                yield return new WaitForSeconds(stepsFrequency);
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+    }
+    */
 }
