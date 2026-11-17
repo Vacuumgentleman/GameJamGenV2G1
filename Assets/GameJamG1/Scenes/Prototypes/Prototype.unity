@@ -38069,13 +38069,21 @@ MonoBehaviour:
   growlVolume: 0.6
   screamClip: {fileID: 8300000, guid: b2618be537e963a46bf8bf87a727a789, type: 3}
   screamVolume: 1
+  roarCompanion: {fileID: 8300000, guid: c723e0299e29c0949b9f2002cb3e6d3b, type: 3}
+  roarCompanionVolume: 0.9
   attackClip: {fileID: 8300000, guid: 8b440b4770ba12749a87cfdcd34ed7d9, type: 3}
   attackVolume: 1
   maxDistance: 25
   chaseLayerLoop: {fileID: 8300000, guid: 7b1ff47d40fc9ef4e9f1450b8374e234, type: 3}
   chaseLayerVolume: 0.6
+  chaseLayerPitch: 1.15
   chaseLayerScream: {fileID: 8300000, guid: 4fabc45b6fede704fb5659c3a26dabc9, type: 3}
   chaseLayerScreamVolume: 0.8
+  chaseTensionLoop: {fileID: 8300000, guid: ff854dab145787a4aadb1d7285bc9eb6, type: 3}
+  tensionVolume: 0.55
+  tensionPitch: 1.2
+  tensionFadeIn: 0.8
+  tensionFadeOut: 6
 --- !u!114 &1442198822
 MonoBehaviour:
   m_ObjectHideFlags: 0
